@@ -1,0 +1,71 @@
+#!/bin/sh
+
+# KESPLASH v1.0 - This is the *most optimal & perfect way* to do this.
+# I dare you to prove me wrong and send an "improved script" to:
+# contact@nulldevice.anonaddy.com or submit it to https://github.com/kedepot/kesplash
+
+# def color variables
+# NC="\033[0m"
+LOW="\033[38;5;67m"
+BLUE="\033[38;5;111m"
+GREEN="\033[38;5;115m"
+
+lrb=$(last reboot | awk '{ print $11 }')
+
+days=0
+hours=0
+minutes=0
+
+f_round() {
+     local digit="${2}"; [[ "${2}" =~ ^[0-9]+$ ]] || digit="0"
+     LC_ALL=C printf "(%.${digit}f%%)" "${1}"
+     echo
+}
+
+f_calctime () {
+    printf '%dd-%dh-%dm' $(($1/86400)) $(($1%86400/3600)) $(($1%3600/60))
+}
+
+for i in $lrb;
+do
+    IFS='+' read -r -a day <<< "$i"
+    if [ "${#day[@]}" -eq 2 ]; then
+        d=${day[0]//[!0-9]/}
+        days=$(($days + $d))
+    fi
+    m=$(echo ${i: -3:-1} | sed 's/^0*//')
+    if [ "$m" ]; then
+        minutes=$(($minutes + $m))
+    fi
+    h=$(echo ${i: -6:-4} | sed 's/^0*//')
+    if [ "$h" ]; then
+        hours=$(($hours + $h))
+    fi
+done
+
+# So many variables!
+total_up=$(($days * 86400 + $hours * 3600 + $minutes * 60))
+paclog=$(sed -n "/ installed $1/{s/].*/]/p;q}" /var/log/pacman.log)
+start_of_life=$(date -d ${paclog: 1:10} +%s)
+today=$(date +%s)
+life=$(($today - $start_of_life))
+life_percent=$(awk "BEGIN {print $total_up/$life * 100}")
+down=$(($life - $total_up))
+down_percent=$(awk "BEGIN {print $down/$life * 100}")
+
+a=$(printf "tot.up:")
+b=$(f_calctime $total_up)
+c=$(f_round $life_percent 1)
+
+d=$(printf "tot.down:")
+e=$(f_calctime $down)
+f=$(f_round $down_percent 1)
+
+g=$(printf "system-life:")
+h=$(f_calctime $life)
+
+# The last echo-color sets color for the printf. to-do: more color control
+echo
+echo -e "${BLUE}$(date +'%A') ${LOW}$(date +'%b %e %H:%M:%S %Z %Y') ${GREEN}$(uptime -p) ${LOW}"
+printf '%-9s ' $a $b $c $d $e $f $g $h
+echo -e "\n"
