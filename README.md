@@ -7,7 +7,7 @@ From neofetch to pfetch...to just a little bit more up-time stats.
 
 ### Info
 Uses 'last reboot' data (& such) to gather "approximate" data,
-that is "good enough" for my desktop use, as terminal splash screen trivia. 
+that is "good enough" for my desktop use, as terminal splash screen trivia - that only runs when I launch a Terminal window. No daemons or anything.
 Customize directly in the script. Compatible with most shells & distros. Probably.
 
 ### Use
