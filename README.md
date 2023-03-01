@@ -16,8 +16,9 @@ Also included: kesplashup - the basic version, with just the colorized up-time:
 ![2023-03-35_08-18-35_2](https://user-images.githubusercontent.com/95410139/222074132-6128bac6-f18c-43fb-be02-65ea59d8b5ac.png)
 
 ### Use
-Run kesplash (or kesplashup) from the top of your .bashrc (or similar)
-& by all means, feel free to tweak the colours to whatever you prefer!
+Run kesplash (or kesplashup) from the top of your .bashrc (or similar).
+
+By all means, feel free to tweak the colours and formatting to whatever you prefer!
 
 ( For more advanced up-time statistics, check out:
 https://github.com/rfmoz/tuptime )
