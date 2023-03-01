@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# KESPLASH v1.1 - This is the *most optimal & perfect way* to do this.
+# KESPLASH v1.3 - This is the *most optimal & perfect way* to do this.
 # I dare you to prove me wrong and send an "improved script" to:
 # contact@nulldevice.anonaddy.com or submit it to https://github.com/kedepot/kesplash
 
@@ -24,7 +24,7 @@ f_round() {
 }
 
 f_calctime () {
-    printf '%dd-%dh-%dm' $(($1/86400)) $(($1%86400/3600)) $(($1%3600/60))
+    printf '%dd %dh %dm' $(($1/86400)) $(($1%86400/3600)) $(($1%3600/60))
 }
 
 for i in $lrb;
@@ -55,11 +55,13 @@ life_percent=$(awk "BEGIN {print $total_up/$life * 100}")
 
 b=$(f_calctime $total_up)
 c=$(f_round $life_percent 1)
-d=$(printf "[session #%i]" $count )
+d=$(printf "[Session #%i]" $count )
 h=$(f_calctime $life)
+up=$(uptime -p | sed 's/\s*up/Up/; s/\s*years/y/; s/\s*weeks/w/; s/\s*days/d/; s/\s*hours/h/; s/\s*minutes/m/')
+# up=$(uptime -p)
+regdate=$(LC_TIME="en_US.UTF-8"  date +'Week %V, %A %B %d %Y, %H:%M:%S %Z')
 
-# The last echo-color sets color for the printf. to-do: more color control
 echo
-echo -e "${BLUE}$d ${LOW}$(date +'%A') $(date +'%b%e %H:%M:%S %Z %Y') ${GREEN}$(uptime -p) ${LOW}"
-echo "system-life: "$h "    total-up: "$b $c
+echo -e "${BLUE}$d ${LOW}$regdate - ${GREEN}$up"
+echo -e "${LOW}System-life: "$h"    Total-up: "$b $c
 echo
