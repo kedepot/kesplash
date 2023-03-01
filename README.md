@@ -3,7 +3,7 @@
 Bash Splash!
 From neofetch to pfetch...to just a little bit more up-time stats.
 
-![image](https://user-images.githubusercontent.com/95410139/216276789-d9a08a4d-e8d4-4280-b786-78c36496da53.png)
+![2023-03-35_08-18-35](https://user-images.githubusercontent.com/95410139/222070953-da3cfcbe-8ba0-461b-8b85-3395f9cdb344.png)
 
 ### Info
 - Uses 'last reboot' data (& such) to gather "approximate" data
