@@ -20,5 +20,8 @@ Run kesplash (or kesplashup) from the top of your .bashrc (or similar).
 
 By all means, feel free to tweak the colours and formatting to whatever you prefer!
 
+NOTE: If you (or your distro) has /etc/logrotate.conf & set it clear your logs, 
+this script probably wont work.
+
 ( For more advanced up-time statistics, check out:
 https://github.com/rfmoz/tuptime )
