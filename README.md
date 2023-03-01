@@ -20,7 +20,7 @@ Run kesplash (or kesplashup) from the top of your .bashrc (or similar).
 
 By all means, feel free to tweak the colours and formatting to whatever you prefer!
 
-NOTE: If you (or your distro) has /etc/logrotate.conf & set it clear your logs regularly, 
+NOTE: If you (or your distro) has /etc/logrotate.conf clear your logs regularly, 
 kesplash probably won't be that useful. kesplashup does not use the log, just coloring uptime.
 
 ( For more advanced up-time statistics, check out:
