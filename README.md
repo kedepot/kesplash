@@ -3,7 +3,7 @@
 Bash Splash!
 From neofetch to pfetch...to just a little bit more up-time stats.
 
-![2023-03-35_08-18-35](https://user-images.githubusercontent.com/95410139/222070953-da3cfcbe-8ba0-461b-8b85-3395f9cdb344.png)
+![2023-03-36_16-30-36](https://user-images.githubusercontent.com/95410139/222474453-0ddba751-fc50-424b-9435-739c5f54719d.png)
 
 ### Info
 - Uses 'last reboot' data (& such) to gather "approximate" data
@@ -13,7 +13,7 @@ From neofetch to pfetch...to just a little bit more up-time stats.
 - Compatible with most shells & distros. Probably.
 
 Also included: kesplashup - the basic version, with just the colorized up-time:
-![2023-03-35_08-18-35_2](https://user-images.githubusercontent.com/95410139/222074132-6128bac6-f18c-43fb-be02-65ea59d8b5ac.png)
+![2023-03-02_16-31-02](https://user-images.githubusercontent.com/95410139/222474493-ed62af81-e70e-4986-b016-0a00c46440b3.png)
 
 ### Use
 Run kesplash (or kesplashup) from the top of your .bashrc (or similar).
