@@ -1,14 +1,14 @@
 #!/bin/sh
 
-# KESPLASH v1.3 - This is the *most optimal & perfect way* to do this.
+# KESPLASH v1.41 - This is the *most optimal & perfect way* to do this.
 # I dare you to prove me wrong and send an "improved script" to:
 # contact@nulldevice.anonaddy.com or submit it to https://github.com/kedepot/kesplash
 
 # def color variables
 # NC="\033[0m"
-LOW="\033[38;5;67m"
-BLUE="\033[38;5;111m"
-GREEN="\033[38;5;115m"
+LOW="\033[38;5;67m"  # dark-blue/purple
+BLUE="\033[38;5;111m"  # more like purple
+GREEN="\033[38;5;115m" # light green hilite
 
 lrb=$(last reboot | awk '{ print $11 }')
 
@@ -55,13 +55,14 @@ life_percent=$(awk "BEGIN {print $total_up/$life * 100}")
 
 b=$(f_calctime $total_up)
 c=$(f_round $life_percent 1)
-d=$(printf "[Session #%i]" $count )
+d=$(printf "[ Session #%i ]" $count )
 h=$(f_calctime $life)
-up=$(uptime -p | sed 's/\s*up/Up/; s/\s*years/y/; s/\s*weeks/w/; s/\s*days/d/; s/\s*hours/h/; s/\s*minutes/m/')
-# up=$(uptime -p)
-regdate=$(LC_TIME="en_US.UTF-8"  date +'Week %V, %A %B %d %Y, %H:%M:%S %Z')
+# up=$(uptime -p | sed 's/\s*up/Up/; s/\s*years/y/; s/\s*weeks/w/; s/\s*day/d/; s/\s*hours/h/; s/\s*minutes/m/')
+up=$(uptime -p | sed 's/\s*up/Up/;')
+regdate=$(LC_TIME="en_US.UTF-8"  date +'- %A %B %-d %Y, Week %-V, Q%-q - %H:%M %Z')
 
 echo
-echo -e "${BLUE}$d ${LOW}$regdate - ${GREEN}$up"
-echo -e "${LOW}System-life: "$h"    Total-up: "$b $c
+echo -e ${BLUE}$d ${LOW}$regdate
+echo -e ${GREEN}"  "$up
+echo -e ${LOW}"  System-life: "$h" ─── Total-up: "$b $c
 echo

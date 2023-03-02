@@ -1,13 +1,15 @@
 #!/bin/sh
 
-# KESPLASHUP v1.1 - The "basic version of KESPLASH" with just the colored up-time.
+# KESPLASHUP v1.12 - The "basic version of KESPLASH" with just the colored up-time.
 LOW="\033[38;5;67m"
 BLUE="\033[38;5;111m"
 GREEN="\033[38;5;115m"
 
 day=$(LC_TIME="en_US.UTF-8" date +'%A')
-rdate=$(LC_TIME="en_US.UTF-8" date +'%b %d %Y, %H:%M:%S %Z -')
+rdate=$(LC_TIME="en_US.UTF-8" date +'%b %-d %Y, Week %-V, Q%q, %H:%M %Z')
+up=$(uptime -p | sed 's/\s*up/Up/;')
 
 echo
-echo -e "${BLUE}$day ${LOW}$rdate ${GREEN}$(uptime -p)"
+echo -e ${BLUE}$day ${LOW}$rdate
+echo -e ${GREEN}$up
 echo
