@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# KESPLASH v1.41 - This is the *most optimal & perfect way* to do this!
+# KESPLASH v1.42 - This is the *most optimal & perfect way* to do this!
 # Prove me wrong at contact@nulldevice.anonaddy.com or https://github.com/kedepot/kesplash
 
 color_check=$(tput colors)
@@ -27,9 +27,8 @@ minutes=0
 count=1  # for current boot
 
 f_round() {
-     local digit="${2}"; [[ "${2}" =~ ^[0-9]+$ ]] || digit="0"
+     digit="${2}"; [[ "${2}" =~ ^[0-9]+$ ]] || digit="0"
      LC_ALL=C printf "(%.${digit}f%%)" "${1}"
-     echo
 }
 
 f_calctime () {
@@ -51,7 +50,7 @@ do
     if [ "$h" ]; then
         hours=$(($hours + $h))
     fi
-    let count+=1
+    count=$((count+1))
 done
 
 # So many variables!
