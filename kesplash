@@ -1,14 +1,23 @@
 #!/bin/sh
 
-# KESPLASH v1.41 - This is the *most optimal & perfect way* to do this.
-# I dare you to prove me wrong and send an "improved script" to:
-# contact@nulldevice.anonaddy.com or submit it to https://github.com/kedepot/kesplash
+# KESPLASH v1.41 - This is the *most optimal & perfect way* to do this!
+# Prove me wrong at contact@nulldevice.anonaddy.com or https://github.com/kedepot/kesplash
 
-# def color variables
-# NC="\033[0m"
-LOW="\033[38;5;67m"  # dark-blue/purple
-BLUE="\033[38;5;111m"  # more like purple
-GREEN="\033[38;5;115m" # light green hilite
+color_check=$(tput colors)
+# none of these match the names...
+if [ $color_check -gt 254 ]; then
+    LOW="\033[38;5;67m"
+    BLUE="\033[38;5;111m"
+    GREEN="\033[38;5;115m"
+elif [ $color_check -gt 15 ]; then
+    LOW="\e[34m"
+    BLUE="\e[94m"
+    GREEN="\e[92m"
+else
+    LOW="\e[39m"
+    BLUE="\e[39m"
+    GREEN="\e[39m"
+fi
 
 lrb=$(last reboot | awk '{ print $11 }')
 

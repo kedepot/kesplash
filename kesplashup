@@ -1,9 +1,21 @@
 #!/bin/sh
 
-# KESPLASHUP v1.12 - The "basic version of KESPLASH" with just the colored up-time.
-LOW="\033[38;5;67m"
-BLUE="\033[38;5;111m"
-GREEN="\033[38;5;115m"
+# KESPLASHUP v1.13 - The "basic version of KESPLASH" with just the colored up-time.
+color_check=$(tput colors)
+# none of these match the names...
+if [ $color_check -gt 254 ]; then
+    LOW="\033[38;5;67m"
+    BLUE="\033[38;5;111m"
+    GREEN="\033[38;5;115m"
+elif [ $color_check -gt 15 ]; then
+    LOW="\e[34m"
+    BLUE="\e[94m"
+    GREEN="\e[92m"
+else
+    LOW="\e[39m"
+    BLUE="\e[39m"
+    GREEN="\e[39m"
+fi
 
 day=$(LC_TIME="en_US.UTF-8" date +'%A')
 rdate=$(LC_TIME="en_US.UTF-8" date +'%b %-d %Y, Week %-V, Q%q, %H:%M %Z')
